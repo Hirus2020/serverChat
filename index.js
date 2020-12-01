@@ -2,10 +2,12 @@ var express = require('express');
 var cors = require('cors');
 var app     = express();
 
-app.use(cors())
-
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+//var io = new Server(server, { cors: { origin: '*' } });
+var io = require('socket.io')(server, { cors: { origin: '*' } });
+
+//app.use(cors());
+
 
 io.on('connection', function(socket){
     console.log('Un usuario conectado...');
